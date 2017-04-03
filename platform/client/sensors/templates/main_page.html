@@ -1,0 +1,55 @@
+<template name="main_page">
+    <img src="/img/big.png" height="200">
+    <h1>Introduction</h1>
+    <p>PigProof.com is an open source Internet of Things (IoT) platform based on Meteor.js with firmware for ESP8266 and
+        various sensors with OTA upgrade!</p>
+
+    <h2>Hardware</h2>
+    <img src="/img/esp8266.jpg" height="200">
+    <p><a href="https://espressif.com/en/products/hardware/esp8266ex/overview">ESP8266</a> is a low cost SOC capable of WIFI connection, compatible with Arduino IDE and with the following
+        characteristics:</p>
+    <ul>
+        <li>32-bit RISC CPU: Tensilica Xtensa LX106 running at 80 MHz</li>
+        <li>64 KiB of instruction RAM, 96 KiB of data RAM</li>
+        <li>External QSPI flash: 512 KiB to 4 MiB</li>
+        <li>IEEE 802.11 b/g/n Wi-Fi</li>
+        <li>Integrated TR switch, balun, LNA, power amplifier and matching network</li>
+        <li>WEP or WPA/WPA2 authentication, or open networks</li>
+        <li>16 GPIO pins</li>
+        <li>SPI</li>
+        <li>I²C</li>
+        <li>I²S interfaces with DMA (sharing pins with GPIO)</li>
+        <li>UART on dedicated pins, plus a transmit-only UART can be enabled on GPIO2</li>
+        <li>1 10-bit ADC</li>
+    </ul>
+
+    <h2>Firmware</h2>
+    <p>Written in C with Arduino style coding allow to interact with the node using JSON messages and the MQTT
+        protocol.</p>
+    <p>The firmware start with hardware initialization and send a deploy message with all configurations on
+        the queue <code>iot/T/esp8266/I/---CHIPID---/D/deploy/F/json</code> where ---CHIPID--- is the ID burned
+        inside the ESP8266 chip.</p>
+    <p>In the normal working the node collect informations and send messages (e.g. with information coming from a
+        sensor) on the queue <code>iot/T/esp8266/I/---CHIPID---/D/sensor/F/json</code>.</p>
+    <p>The board can receive commands on the MQTT queue <code>iot/T/esp8266/I/---CHIPID---/C/sensor/F/json</code>,
+        when a message is received the relative function is called.</p>
+    <p>The firmware sketch allow updates via OTA, sending a message on the queue
+        <code>iot/T/esp8266/I/---CHIPID---/C/update/F/json</code> allow to start the update function that download last
+        available firmware, install it and finally reboot the board..</p>
+    <p>The WIFI connection is managed with a captive portal, when the ESP board don't recognize the know wifi
+        network, the same board emulate an access point and allow the configuration via a captive portal, then the
+        credentials are stored in hardware and the board rebooted.</p>
+    <p>The firmware allow a debug via serial port in order to debug the firmware via the USB connector.</P>
+
+    <h2>Software</h2>
+    <img src="/img/meteor.png" height="200">
+    <p><a href="https://www.meteor.com/" >Meteor.js</a> is a javascript based framework able to create both client
+        and server code.</p>
+    <img src="/img/mqtt.jpg" height="200">
+    <p>The communication is based on <a href="http://mqtt.org/">MQTT protocol</a> that allow to send and receive
+        messages with a publish/subscribe approach.</p>
+
+    <h2>Conclusion</h2>
+    <p>PigProof.com is an open source ready platform for the IoT solutions. Give a try today!!!</p>
+
+</template>

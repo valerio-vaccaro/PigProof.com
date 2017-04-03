@@ -1,0 +1,20 @@
+<!-- template for the sensor history page (row of the table), contain
+   summary table
+   { "_id" : "v9E9LkeD4H3jyiXF7",
+   "topic" : "iot/T/esp8266/I/8bfb4a/D/sensor/F/json",
+   "message" : { "Type" : "ESP_OTA_DHT22",
+                 "Version" : "0.0.1",
+                 "ChipId" : "8bfb4a",
+                 "Humidity" : 42,
+                 "Temperature" : 26.4,
+                 "Battery" : 9 },
+   "timestamp" : 1478611152230,
+   "score" : 0,
+   "id" : "iot/T/esp8266/I/8bfb4a/D/sensor/F/json" }
+
+-->
+<template name="sensor_history_ESP_OTA_TFT_page">
+    <!-- summary table  -->
+    <h1>HISTORY</h1>
+    {{> reactiveTable settings=ESP_OTA_TFT_table}}
+</template>

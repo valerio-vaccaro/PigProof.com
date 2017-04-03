@@ -1,0 +1,30 @@
+<!-- template for the sensor item (row of the table), contain
+   form,
+   summary table
+   ChipID, firmware_name, firmware_version, score, timestamp, update
+-->
+<template name="sensors_page">
+    <!-- form
+    <form class="form-inline">
+        <div class="btn-group" data-toggle="buttons-radio">
+            <button class="sort_by_score btn btn-small {{#if sort_by_is 'score'}}btn-primary{{/if}}" type="button">Sort
+                by
+                Timestamp
+            </button>
+            <button class="sort_by_name btn btn-small {{#if sort_by_is 'name'}}btn-primary{{/if}}" type="button">Sort by
+                ChipId
+            </button>
+        </div>
+        <button class="randomize btn btn-warning btn-small" type="button"><i class="icon-random icon-white"></i>
+            Randomize
+        </button>
+        <button class="reset btn btn-danger btn-small" type="button"><i class="icon-refresh icon-white"></i> Reset
+        </button>
+        <div class="input-append">
+            <input class="player_name input-medium input-font-small" type="text" placeholder="New player"/>
+            <button class="add_user btn btn-small" type="button">Add Player</button>
+        </div>
+    </form>-->
+    <!-- summary table  -->
+    {{> reactiveTable settings=sensors_table}}
+</template>

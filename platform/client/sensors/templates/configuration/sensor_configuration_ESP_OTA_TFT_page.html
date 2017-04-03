@@ -1,0 +1,100 @@
+<!-- template for the sensor item (row of the table), contain
+  <th style="width: 120px">ChipId</th>
+            <th>Firmware</th>
+            <th>Version</th>
+            <th style="width: 60px">Score</th>
+            <th style="width: 120px">Timestamp</th>
+            <th style="width: 20px"></th>
+
+{ "_id" : "hiDA7fLz3zhvSXF8x",
+"topic" : "iot/T/esp8266/I/de1b16/D/deploy/F/json",
+"message" : { "Type" : "ESP_OTA_DHT22",
+              "Version" : "0.0.1",
+              "Filename" : "/Users/valerio/Documents/work/arduino/_161108_ESP_OTA_DHT22/_161108_ESP_OTA_DHT22.ino",
+              "CompilationTime" : "Nov  8 2016 12:09:28",
+              "ChipId" : "de1b16",
+              "Pub" : [ "iot/T/esp8266/I/de1b16/C/sensor/F/json", "iot/T/esp8266/I/de1b16/C/update/F/json" ],
+              "Sub" : [ "iot/T/esp8266/I/de1b16/D/sensor/F/json", "iot/T/esp8266/I/de1b16/D/deploy/F/json" ]
+              },
+"timestamp" : 1478610385110,
+"score" : 1,
+"id" : "iot/T/esp8266/I/de1b16/D/deploy/F/json" }
+
+-->
+<template name="sensor_configuration_ESP_OTA_TFT_page">
+    <div class="input-append">
+        <p> Red <input class="red_value input-medium input-font-small" type="text" value="1000" placeholder="0"/></p>
+
+        <p> Green <input class="green_value input-medium input-font-small" type="text" value="1000" placeholder="0"/>
+        </p>
+
+        <p> Blue <input class="blue_value input-medium input-font-small" type="text" value="1000" placeholder="0"/></p>
+
+        <p> White <input class="white_value input-medium input-font-small" type="text" value="1000" placeholder="0"/>
+        </p>
+        <button class="send_message btn btn-small" type="button button-warning">Change color</button>
+    </div>
+    <table class="table table-striped table-hover">
+
+        <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td> ChipId</td>
+            <td class="ChipId">{{sensor.message.ChipId}}</td>
+        </tr>
+        <tr>
+            <td> Firmware name</td>
+            <td class="firmware_name">{{sensor.message.Type}}</td>
+        </tr>
+        <tr>
+            <td> Firmware version</td>
+            <td class="firmware_version">{{sensor.message.Version}}</td>
+        </tr>
+        <tr>
+            <td> Firmware file name</td>
+            <td class="ChipId">{{sensor.message.Filename}}</td>
+        </tr>
+        <tr>
+            <td> Firmware compilation time</td>
+            <td class="ChipId">{{sensor.message.CompilationTime}}</td>
+        </tr>
+        <tr>
+            <td> Deploy queue</td>
+            <td class="Deploy">{{prettifyJSON sensor.message.Deploy}}</td>
+        </tr>
+        <tr>
+            <td> Update</td>
+            <td class="Update">{{prettifyJSON sensor.message.Update}}   <i class="update glyphicon glyphicon-upload"
+                                                                           rel="tooltip"
+                                                                           data-original-title="Update the node"></i>
+            </td>
+        </tr>
+        <tr>
+            <td> Publish queues</td>
+            <td class="ChipId">{{prettifyJSON sensor.message.Pub}}</td>
+        </tr>
+        <tr>
+            <td> Subcription queues</td>
+            <td class="ChipId">{{prettifyJSON sensor.message.Sub}}</td>
+        </tr>
+        <tr>
+            <td> Score</td>
+            <td class="score"><span
+                    class="label label-default {{#if is_max}}label-success{{/if}} {{#if is_min}}label-warning{{/if}}">{{sensor.score}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td> Timestamp</td>
+            <td class="timestamp"><span
+                    class="label label-default {{#if is_expired}}label-danger{{/if}} {{#if is_in_warning}}label-warning{{/if}} ">{{prettifyDate sensor.timestamp}}</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</template>
