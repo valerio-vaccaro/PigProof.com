@@ -27,7 +27,10 @@ __iot/T/esp8266/I/---CHIPID---/D/deploy/F/json__ is composed with different sect
 - __F__ introduce the Format section and
 - __json__ formatting protocol use in the payload (e.g. json, csv, txt).
 
-## Customization
+## Making is works
 In order to make it work:
 
-- configure 
+- configure on __PP_MQTT.h__ the fields regarding the MQTT server (SERVER, SERVERPORT, USERNAME and KEY),      
+- configure on __PP_WIFI.h__ the fields about the OTA funtionalities (UPDATE_SERVER and UPDATE_URL)
+- implement your code in coping the structure in test module
+- compile and upload on your board
